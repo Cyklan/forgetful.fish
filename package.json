@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "my-app",
+  "name": "forgetful.fish-server",
   "version": "1.0.0",
   "description": "npm init template for bootstrapping an empty Colyseus project",
   "main": "build/index.js",
@@ -9,10 +9,8 @@
   },
   "scripts": {
     "start": "tsx watch src/index.ts",
-    "loadtest": "tsx loadtest/example.ts --room my_room --numClients 2",
     "build": "npm run clean && tsc",
-    "clean": "rimraf build",
-    "test": "mocha -r tsx test/**_test.ts --exit --timeout 15000"
+    "clean": "rimraf build"
   },
   "author": "",
   "license": "UNLICENSED",
