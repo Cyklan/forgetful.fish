@@ -18,9 +18,6 @@ export class GameState extends Schema {
 
   @type("boolean") gameHasStarted: boolean = false;
 
-  @type("boolean") boxLeftClicked: boolean = false;
-  @type("boolean") boxRightClicked: boolean = false;
-
   @type([Card]) graveyard: ArraySchema<Card> = new ArraySchema();
   @type([Card]) exile: ArraySchema<Card> = new ArraySchema();
   @type(Stack) stack: Stack = new Stack();
