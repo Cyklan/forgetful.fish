@@ -3,6 +3,7 @@ import { Land } from "../../Land";
 import { Mana } from "../../Mana";
 
 export class Island extends Land {
+  name: string = "Island";
   isBasic: boolean = true;
   entersTapped: boolean = false;
 

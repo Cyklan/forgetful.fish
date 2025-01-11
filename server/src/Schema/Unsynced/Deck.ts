@@ -1,6 +1,9 @@
 import { Card } from "../Card";
+import { Dandan } from "../Cards/Creatures/Dandan";
 import { Island } from "../Cards/Lands/Island";
 import { Brainstorm } from "../Cards/Spells/Brainstorm";
+import { DiminishingReturn } from "../Cards/Spells/DiminishingReturn";
+import { MysticRetrieval } from "../Cards/Spells/MysticRetrieval";
 
 export class Deck {
   cards: Card[];
@@ -51,9 +54,14 @@ export class Deck {
     this.addCard(Brainstorm, 2);
   }
 
-  private addSorceries() {}
+  private addSorceries() {
+    this.addCard(DiminishingReturn, 2);
+    this.addCard(MysticRetrieval, 2);
+  }
 
-  private addDandans() {}
+  private addDandans() {
+    this.addCard(Dandan, 10);
+  }
 
   private addCard(card: new () => Card, amount = 1) {
     for (let i = 0; i < amount; i++) {

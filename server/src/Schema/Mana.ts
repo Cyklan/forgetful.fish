@@ -1,7 +1,13 @@
 import { Schema, type } from "@colyseus/schema";
 
 export class Mana extends Schema {
-  @type("string") color: "blue" | "red" | "generic";
+  @type("string") color:
+    | "blue"
+    | "red"
+    | "green"
+    | "white"
+    | "black"
+    | "generic";
   @type("number") amount: number;
 
   constructor(color: Mana["color"], amount: number) {
