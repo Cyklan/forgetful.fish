@@ -1,8 +1,6 @@
 import { Client, Room } from "colyseus";
 import { GameState } from "../Schema/GameState";
 import { ExtractUserData, ExtractAuthData } from "@colyseus/core/build/Room";
-import { MessageType } from "../Messages/MessageType";
-import { StartGameMessage } from "../Messages/general/startGame";
 import { MessageHandler } from "../Messages/Handler/MessageHandler";
 import { logger } from "../Logging/Logger";
 

@@ -1,8 +1,9 @@
-import { ArraySchema, Schema, type } from "@colyseus/schema";
+import { ArraySchema, filter, Schema, type } from "@colyseus/schema";
 import { Player } from "./Player";
 import { Card } from "./Card";
 import { Stack } from "./Stack";
 import { Deck } from "./Unsynced/Deck";
+import { Client } from "colyseus"
 
 export class GameState extends Schema {
   @type("string") roomPassword?: string;
@@ -10,7 +11,15 @@ export class GameState extends Schema {
   @type(Player) player1: Player;
   @type(Player) player2: Player;
 
+  @filter(function(this: GameState, client: Client) {
+    return this.player1.sessionId === client.sessionId
+  })
+  @type("boolean") isLobbyHost: boolean = true; 
+
   @type("boolean") gameHasStarted: boolean = false;
+
+  @type("boolean") boxLeftClicked: boolean = false;
+  @type("boolean") boxRightClicked: boolean = false;
 
   @type([Card]) graveyard: ArraySchema<Card> = new ArraySchema();
   @type([Card]) exile: ArraySchema<Card> = new ArraySchema();
