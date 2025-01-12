@@ -9,10 +9,12 @@ export class Mana extends Schema {
     | "black"
     | "generic";
   @type("number") amount: number;
+  @type("string") producedBy: string;
 
-  constructor(color: Mana["color"], amount: number) {
+  constructor(color: Mana["color"], amount: number, producedBy: string) {
     super();
     this.color = color;
     this.amount = amount;
+    this.producedBy = producedBy;
   }
 }

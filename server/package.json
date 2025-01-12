@@ -31,6 +31,7 @@
   "dependencies": {
     "@colyseus/monitor": "^0.15.0",
     "@colyseus/playground": "^0.15.3",
+    "@colyseus/schema": "^2.0.36",
     "@colyseus/tools": "^0.15.0",
     "@paralleldrive/cuid2": "^2.2.2",
     "colyseus": "^0.15.0",

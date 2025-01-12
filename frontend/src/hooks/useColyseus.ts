@@ -10,6 +10,7 @@ export type ColyseusState = {
   state: GameState | null;
   join: () => Promise<void>;
   me: () => Player | undefined;
+  opponent: () => Player | undefined;
 };
 
 export const useGame = create<ColyseusState>((set, get) => ({
@@ -21,12 +22,21 @@ export const useGame = create<ColyseusState>((set, get) => ({
     }
 
     const room = await currentState.client.joinOrCreate<GameState>("dandan");
-    room.onStateChange((state) => set({ state }));
+    room.onStateChange((state) => {
+      set({ state });
+    });
 
     set({ room });
   },
   state: null,
   me: () => {
-    return get().state?.isLobbyHost ? get().state?.player1 : get().state?.player2
-  }
+    return get().state?.isLobbyHost
+      ? get().state?.player1
+      : get().state?.player2;
+  },
+  opponent: () => {
+    return get().state?.isLobbyHost
+      ? get().state?.player2
+      : get().state?.player1;
+  },
 }));

@@ -1,17 +1,18 @@
-import { Client, Room } from "colyseus";
-import { GameState } from "../../Schema/GameState";
 import { match } from "ts-pattern";
-import { Message } from "../Message";
 import { Handler, MessageHandlerFunction } from "./Handler";
-import { MessageType } from "../MessageType";
 import { CommandHandler } from "./CommandHandler/CommandHandler";
-import { logger, logUnknownMessage } from "../../Logging/Logger";
+import { logUnknownMessage } from "../../Logging/Logger";
+import { CardPlayHandler } from "./Card/CardPlayHandler"
+import { MessageNamespace } from "../MessageNamespace"
 
 export class MessageHandler extends Handler {
   handleMessage: MessageHandlerFunction = (client, message) => {
-    match(message.type)
-      .with(MessageType.command, () => {
+    match(message.namespace)
+      .with(MessageNamespace.general, () => {
         new CommandHandler(this.room).handleMessage(client, message);
+      })
+      .with(MessageNamespace.card, () => {
+        new CardPlayHandler(this.room).handleMessage(client, message);
       })
       .otherwise(() => {
         logUnknownMessage(this.room.roomId, client.sessionId, message, {

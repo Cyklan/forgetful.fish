@@ -1,4 +1,4 @@
-import { CollectionSchema, type } from "@colyseus/schema";
+import { ArraySchema, type } from "@colyseus/schema";
 import { Card } from "./Card";
 import { Mana } from "./Mana";
 
@@ -7,7 +7,9 @@ export class Land extends Card {
   @type("boolean") isBasic: boolean;
   @type("boolean") isTapped: boolean = false;
   @type("boolean") entersTapped: boolean;
+  @type("boolean") wasPlayedThisTurn: boolean;
 
   @type("string") producesQuantity: "or" | "all";
-  @type([Mana]) produces: CollectionSchema<Mana> = new CollectionSchema();
+  @type([Mana]) produces: ArraySchema<Mana> = new ArraySchema();
+  @type([Mana]) produced: ArraySchema<Mana> = new ArraySchema();
 }

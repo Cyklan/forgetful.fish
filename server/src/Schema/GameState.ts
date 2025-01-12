@@ -3,7 +3,7 @@ import { Player } from "./Player";
 import { Card } from "./Card";
 import { Stack } from "./Stack";
 import { Deck } from "./Unsynced/Deck";
-import { Client } from "colyseus"
+import { Client } from "colyseus";
 
 export class GameState extends Schema {
   @type("string") roomPassword?: string;
@@ -11,10 +11,11 @@ export class GameState extends Schema {
   @type(Player) player1: Player;
   @type(Player) player2: Player;
 
-  @filter(function(this: GameState, client: Client) {
-    return this.player1.sessionId === client.sessionId
+  @filter(function (this: GameState, client: Client) {
+    return this.player1.sessionId === client.sessionId;
   })
-  @type("boolean") isLobbyHost: boolean = true; 
+  @type("boolean")
+  isLobbyHost: boolean = true;
 
   @type("boolean") gameHasStarted: boolean = false;
 
@@ -50,6 +51,9 @@ export class GameState extends Schema {
     this.deck = new Deck();
     this.player1.hand = new ArraySchema(...(this.deck.draw(7) as Card[]));
     this.player2.hand = new ArraySchema(...(this.deck.draw(7) as Card[]));
+
+    this.player1.updateCardsInHand();
+    this.player2.updateCardsInHand();
     this.gameHasStarted = true;
   }
 
