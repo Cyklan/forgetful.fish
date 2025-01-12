@@ -17,4 +17,17 @@ import { Lobby } from "./Lobby";
     aspect-ratio: 16 / 9;
     margin: 0 auto;
   }
+  :global(.game-ui) {
+    width: auto !important;
+    height: 100vh !important;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+    pointer-events: none;
+  }
 </style>

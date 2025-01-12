@@ -2,6 +2,7 @@ import { useEffect, type FC } from "react";
 import { useGame } from "../hooks/useColyseus";
 import { BaseGameState } from "./BaseGameState";
 import { Game } from "./Game";
+import { UILayer } from "./UILayer";
 
 export const Lobby: FC = () => {
   const { join, state, room } = useGame();
@@ -19,7 +20,12 @@ export const Lobby: FC = () => {
           Players joined: {!state.player2.sessionId ? 1 : 2}
           <br />
           <BaseGameState />
-          {state.gameHasStarted && <Game />}
+          {state.gameHasStarted && (
+            <>
+              <Game />
+              <UILayer />
+            </>
+          )}
         </div>
       ) : (
         "Loading..."
