@@ -1,5 +1,5 @@
 import { useGame } from "../hooks/useColyseus"
-import { StartGameMessage } from "../../../server/src/Messages/general/startGame"
+import { StartGameMessage } from "communication"
 
 export const startGameAction = () => {
   useGame.getState().room?.send("*", StartGameMessage)

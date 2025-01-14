@@ -1,5 +1,4 @@
-import type { Card } from "../../../../server/src/Schema/Card";
-import type { Land } from "../../../../server/src/Schema/Land";
+import type { Card, Land } from "schema";
 import { playLandAction } from "../land/Play";
 import { tapLandAction } from "../land/Tap";
 import { untapLandAction } from "../land/Untap";

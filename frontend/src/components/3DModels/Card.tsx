@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import type { Card as CardType } from "../../../../server/src/Schema/Card";
+import type { Card as CardType } from "schema";
 import { Text } from "@react-three/drei";
 import type { Euler, ThreeEvent, Vector3 } from "@react-three/fiber";
 

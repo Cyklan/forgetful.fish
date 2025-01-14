@@ -11,7 +11,7 @@ export class Mana extends Schema {
   @type("number") amount: number;
   @type("string") producedBy: string;
 
-  constructor(color: Mana["color"], amount: number, producedBy: string) {
+  constructor(color: Mana["color"], amount: number, producedBy?: string) {
     super();
     this.color = color;
     this.amount = amount;

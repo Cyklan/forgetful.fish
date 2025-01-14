@@ -1,6 +1,6 @@
 import { match } from "ts-pattern"
 import { Handler, MessageHandlerFunction } from "../Handler"
-import { MessageType } from "../../MessageType"
+import { MessageType } from "../../../../../communication/src/Message/MessageType"
 import { LandHandler } from "./LandHandler"
 
 export class CardPlayHandler extends Handler {

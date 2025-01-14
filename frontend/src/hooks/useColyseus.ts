@@ -1,9 +1,7 @@
 import { Client, Room } from "colyseus.js";
 import { create } from "zustand";
 import { SERVER_URL } from "astro:env/client";
-import type { GameState } from "../../../server/src/Schema/GameState";
-import type { Player } from "../../../server/src/Schema/Player";
-
+import type { GameState, Player } from "schema";
 export type ColyseusState = {
   client: Client;
   room?: Room<GameState>;

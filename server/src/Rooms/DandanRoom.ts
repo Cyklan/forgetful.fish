@@ -1,5 +1,5 @@
 import { Client, Room } from "colyseus";
-import { GameState } from "../Schema/GameState";
+import { GameState } from "schema";
 import { ExtractUserData, ExtractAuthData } from "@colyseus/core/build/Room";
 import { MessageHandler } from "../Messages/Handler/MessageHandler";
 import { logger } from "../Logging/Logger";
@@ -22,7 +22,7 @@ export class DandanRoom extends Room<GameState> {
       ExtractAuthData<this["clients"]>
     >,
     _options?: any,
-    _auth?: ExtractAuthData<this["clients"]>,
+    _auth?: ExtractAuthData<this["clients"]>
   ): void | Promise<any> {
     logger.info(`Player ${client.sessionId} joined room ${this.roomId}`);
     this.state.addPlayer(client.sessionId);
@@ -33,11 +33,11 @@ export class DandanRoom extends Room<GameState> {
       ExtractUserData<this["clients"]>,
       ExtractAuthData<this["clients"]>
     >,
-    onPurpose: boolean,
+    onPurpose: boolean
   ): void | Promise<any> {
     if (onPurpose) {
       logger.info(
-        `Player ${client.sessionId} disconnected from ${this.roomId}`,
+        `Player ${client.sessionId} disconnected from ${this.roomId}`
       );
     } else {
       logger.info(`Player ${client.sessionId} lost connection`);

@@ -1,5 +1,5 @@
 import { Room } from "colyseus";
-import { GameState } from "../Schema/GameState";
+import { GameState } from "schema";
 
 export const getPlayerByClientId = (
   room: Room<GameState>,

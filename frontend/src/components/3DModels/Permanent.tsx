@@ -1,7 +1,6 @@
 import type { FC } from "react";
 import { Text } from "@react-three/drei";
-import type { Creature } from "../../../../server/src/Schema/Creature";
-import type { Land } from "../../../../server/src/Schema/Land";
+import type { Creature, Land } from "schema";
 
 export type PermanentProps = {
   card: Land | Creature;

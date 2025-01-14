@@ -3,7 +3,7 @@ import { Handler, MessageHandlerFunction } from "./Handler";
 import { CommandHandler } from "./CommandHandler/CommandHandler";
 import { logUnknownMessage } from "../../Logging/Logger";
 import { CardPlayHandler } from "./Card/CardPlayHandler"
-import { MessageNamespace } from "../MessageNamespace"
+import { MessageNamespace } from "../../../../communication/src/Message/MessageNamespace"
 
 export class MessageHandler extends Handler {
   handleMessage: MessageHandlerFunction = (client, message) => {

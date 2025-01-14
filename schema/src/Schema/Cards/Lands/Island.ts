@@ -1,4 +1,4 @@
-import { CollectionSchema } from "@colyseus/schema";
+import { ArraySchema } from "@colyseus/schema";
 import { Land } from "../../Land";
 import { Mana } from "../../Mana";
 
@@ -8,7 +8,5 @@ export class Island extends Land {
   entersTapped: boolean = false;
 
   producesQuantity: "or" | "all" = "all";
-  produces: CollectionSchema<Mana> = new CollectionSchema([
-    new Mana("blue", 1),
-  ]);
+  produces: ArraySchema<Mana> = new ArraySchema(new Mana("blue", 1, this.id));
 }

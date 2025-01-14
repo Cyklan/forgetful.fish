@@ -1,6 +1,6 @@
 import { Client, Room } from "colyseus";
-import { GameState } from "../../Schema/GameState";
-import { Message } from "../Message";
+import { GameState } from "schema";
+import { Message } from "../../../../communication/src/Message/Message";
 
 export type MessageHandlerFunction = (
   client: Client<any, any>,

@@ -1,6 +1,6 @@
 import { createLogger, format } from "winston";
 import { Console, File } from "winston/lib/winston/transports";
-import { Message } from "../Messages/Message";
+import { Message } from "../../../communication/src/Message/Message";
 
 export const logger = createLogger({
   transports: [

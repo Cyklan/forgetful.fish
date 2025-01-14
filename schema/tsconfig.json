@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "build",
+    "outDir": "dist",
     "target": "ESNext",
     "module": "CommonJS",
     "moduleResolution": "node",
@@ -11,9 +11,10 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "declaration": true,
   },
   "include": [
     "src"
-, "../communication/src/Message/Message.ts", "../communication/src/Message/MessageNamespace.ts", "../communication/src/Message/MessageType.ts"  ]
+  ]
 }

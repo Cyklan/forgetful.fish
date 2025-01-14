@@ -1,6 +1,6 @@
 import { Handler, MessageHandlerFunction } from "../Handler";
 import { match } from "ts-pattern";
-import { StartGameMessage } from "../../general/startGame";
+import { StartGameMessage } from "communication";
 import { logger, logUnknownMessage } from "../../../Logging/Logger";
 
 export class CommandHandler extends Handler {

@@ -1,23 +1,21 @@
 import { match } from "ts-pattern";
 import { Handler, MessageHandlerFunction } from "../Handler";
-import { LandPlayMessage } from "../../card/LandPlayMessage";
+import {
+  LandAction,
+  LandPlayMessage,
+  LandTapMessage,
+  LandUntapMessage,
+} from "communication";
 import { getPlayerByClientId } from "../../../util/getPlayerByClientId";
 import { ArraySchema } from "@colyseus/schema";
-import { LandTapMessage } from "../../card/LandTapMessage";
-import { Land } from "../../../Schema/Land";
-import { Mana } from "../../../Schema/Mana";
-
-export const LandActions = {
-  play: "play",
-  tap: "tap",
-  untap: "untap",
-} as const;
+import { Land } from "schema";
+import { Mana } from "schema";
 
 export class LandHandler extends Handler {
   handleMessage: MessageHandlerFunction = (client, message) => {
     const player = getPlayerByClientId(this.room, client.sessionId);
     match(message.action)
-      .with(LandActions.play, () => {
+      .with(LandAction.play, () => {
         if (player.hasPlayedLand) {
           return;
         }
@@ -35,7 +33,7 @@ export class LandHandler extends Handler {
         player.hasPlayedLand = true;
         player.updateCardsInHand();
       })
-      .with(LandActions.tap, () => {
+      .with(LandAction.tap, () => {
         const tapMessage = message as typeof LandTapMessage;
         const land = tapMessage.args;
         const landToTap = player.lands.find(
@@ -51,8 +49,8 @@ export class LandHandler extends Handler {
         landToTap.produced = new ArraySchema(...manaToAdd);
         landToTap.isTapped = true;
       })
-      .with(LandActions.untap, () => {
-        const tapMessage = message as typeof LandTapMessage;
+      .with(LandAction.untap, () => {
+        const tapMessage = message as typeof LandUntapMessage;
         const land = tapMessage.args;
         const landToUntap = player.lands.find(
           (playedLand) => playedLand.id === land.id

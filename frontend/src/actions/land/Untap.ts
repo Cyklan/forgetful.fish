@@ -1,7 +1,6 @@
-import type { Land } from "../../../../server/src/Schema/Land";
+import type { Land, Mana } from "schema";
 import { useGame } from "../../hooks/useColyseus";
-import { LandUntapMessage } from "../../../../server/src/Messages/card/LandUntapMessage";
-import type { Mana } from "../../../../server/src/Schema/Mana";
+import { LandUntapMessage } from "communication";
 
 export const untapLandAction = (land: Land, produced: Mana[]) => {
   const { room } = useGame.getState();
@@ -10,5 +9,5 @@ export const untapLandAction = (land: Land, produced: Mana[]) => {
     return;
   }
 
-  room?.send("*", { ...LandUntapMessage, args: { ...land, produced }, });
+  room?.send("*", { ...LandUntapMessage, args: { ...land, produced } });
 };

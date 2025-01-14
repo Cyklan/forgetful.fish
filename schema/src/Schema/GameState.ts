@@ -3,7 +3,7 @@ import { Player } from "./Player";
 import { Card } from "./Card";
 import { Stack } from "./Stack";
 import { Deck } from "./Unsynced/Deck";
-import { Client } from "colyseus";
+import type { Client } from "colyseus";
 
 export enum GamePhase {
   Beginning,

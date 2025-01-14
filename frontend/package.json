@@ -14,8 +14,10 @@
     "@react-three/fiber": "^8.17.12",
     "astro": "^5.1.5",
     "colyseus.js": "^0.15.26",
+    "communication": "file:../communication",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "schema": "file:../schema",
     "three": "^0.172.0",
     "zustand": "^5.0.3"
   },
